@@ -1,5 +1,5 @@
 concurrent = ${runners_concurrent}
-check_interval = 0
+check_interval = ${runners_check_interval}
 sentry_dsn = "${sentry_dsn}"
 
 [[runners]]
@@ -24,7 +24,6 @@ sentry_dsn = "${sentry_dsn}"
     pull_policy = "${runners_pull_policy}"
     runtime = "${runners_docker_runtime}"
     helper_image = "${runners_helper_image}"
-    gpus = "all"
   [runners.docker.tmpfs]
     ${runners_volumes_tmpfs}
   [runners.docker.services_tmpfs]
@@ -63,8 +62,4 @@ sentry_dsn = "${sentry_dsn}"
       ${docker_machine_options}
     ]
 
-    ${runners_off_peak_timezone}
-    ${runners_off_peak_idle_count}
-    ${runners_off_peak_idle_time}
-    ${runners_off_peak_periods_string}
 ${runners_machine_autoscaling}
